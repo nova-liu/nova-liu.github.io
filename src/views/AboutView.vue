@@ -34,7 +34,7 @@ const cards = [
     link: 'zhixizhixizhixi@gmail.com',
   },
 ]
-const name = 'Zhe Liu'
+const name = 'Nova Liu'
 const avatar = '/jiji.jpeg'
 const description = 'A backend developer, badminton and fitness enthusiast'
 </script>
