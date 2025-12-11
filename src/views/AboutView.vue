@@ -19,7 +19,7 @@ const cards = [
     id: 2,
     img: '/github.png',
     title: 'github',
-    link: 'https://github.com/liuzhe7',
+    link: 'https://github.com/nova-liu',
   },
   {
     id: 3,
