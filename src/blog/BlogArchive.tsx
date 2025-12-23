@@ -52,226 +52,213 @@ export default function BlogArchive() {
     <Box sx={{ minHeight: "100vh", bgcolor: "#fafafa" }}>
       <NavigationBar />
       <Box sx={{ pt: 8 }}>
-        <Container maxWidth="xl" sx={{ py: 6 }}>
+        <Container maxWidth="md" sx={{ py: 6 }}>
           <Typography
             variant="h3"
             component="h1"
             align="center"
             gutterBottom
-            sx={{ mb: 6, fontWeight: 600, color: "#000" }}
+            sx={{ mb: 3, fontWeight: 600, color: "#000" }}
           >
-            {selectedTag ? `标签: ${selectedTag}` : ""}
+            {selectedTag ? `标签: ${selectedTag}` : "博客归档"}
           </Typography>
 
-          <Box sx={{ display: "flex", gap: 4, alignItems: "flex-start" }}>
-            <Box sx={{ flex: 1, maxWidth: "calc(75% - 16px)" }}>
-              {archives.length === 0 ? (
-                <Typography
-                  variant="h6"
-                  align="center"
-                  sx={{ color: "#666", py: 4 }}
-                >
-                  没有找到相关文章
-                </Typography>
-              ) : (
-                archives.map((yearGroup) => (
-                  <Box key={yearGroup.year} sx={{ mb: 6 }}>
-                    <Typography
-                      variant="h4"
-                      component="h2"
-                      gutterBottom
-                      sx={{
-                        fontWeight: 600,
-                        color: "#000",
-                        borderBottom: "2px solid #000",
-                        pb: 1,
-                        mb: 3,
-                      }}
-                    >
-                      {yearGroup.year} 年
-                    </Typography>
+          <Paper
+            elevation={0}
+            sx={{
+              p: 2,
+              mb: 4,
+              border: "1px solid #e0e0e0",
+              borderRadius: 2,
+            }}
+          >
+            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
+              <Chip
+                label="全部"
+                clickable
+                size="small"
+                onClick={() => setSelectedTag(null)}
+                sx={{
+                  bgcolor: selectedTag === null ? "#000" : "#f5f5f5",
+                  color: selectedTag === null ? "#fff" : "#000",
+                  border: "1px solid #e0e0e0",
+                  "&:hover": {
+                    bgcolor: selectedTag === null ? "#333" : "#e0e0e0",
+                  },
+                }}
+              />
+              {allTags.map((tag) => (
+                <Chip
+                  key={tag}
+                  label={tag}
+                  size="small"
+                  clickable
+                  onClick={() => setSelectedTag(tag)}
+                  sx={{
+                    bgcolor: selectedTag === tag ? "#000" : "#f5f5f5",
+                    color: selectedTag === tag ? "#fff" : "#000",
+                    border: "1px solid #e0e0e0",
+                    "&:hover": {
+                      bgcolor: selectedTag === tag ? "#333" : "#e0e0e0",
+                    },
+                  }}
+                />
+              ))}
+            </Box>
+          </Paper>
 
-                    {yearGroup.months.map((monthGroup) => (
-                      <Box key={monthGroup.month} sx={{ mb: 4, ml: 2 }}>
-                        <Typography
-                          variant="h5"
-                          component="h3"
-                          gutterBottom
-                          sx={{ fontWeight: 500, mb: 2, color: "#000" }}
-                        >
-                          {getMonthName(monthGroup.month)}
-                        </Typography>
+          <Box>
+            {archives.length === 0 ? (
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{ color: "#666", py: 4 }}
+              >
+                没有找到相关文章
+              </Typography>
+            ) : (
+              archives.map((yearGroup) => (
+                <Box key={yearGroup.year} sx={{ mb: 6 }}>
+                  <Typography
+                    variant="h4"
+                    component="h2"
+                    gutterBottom
+                    sx={{
+                      fontWeight: 600,
+                      color: "#000",
+                      borderBottom: "2px solid #000",
+                      pb: 1,
+                      mb: 3,
+                    }}
+                  >
+                    {yearGroup.year} 年
+                  </Typography>
 
-                        <Stack spacing={2} sx={{ ml: 2 }}>
-                          {monthGroup.posts.map((post) => (
-                            <Card
-                              key={post.id}
-                              elevation={0}
-                              sx={{
-                                border: "1px solid #e0e0e0",
-                                borderRadius: 2,
-                                transition: "all 0.2s ease",
-                                "&:hover": {
-                                  borderColor: "#000",
-                                },
-                              }}
+                  {yearGroup.months.map((monthGroup) => (
+                    <Box key={monthGroup.month} sx={{ mb: 4, ml: 2 }}>
+                      <Typography
+                        variant="h5"
+                        component="h3"
+                        gutterBottom
+                        sx={{ fontWeight: 500, mb: 2, color: "#000" }}
+                      >
+                        {getMonthName(monthGroup.month)}
+                      </Typography>
+
+                      <Stack spacing={2} sx={{ ml: 2 }}>
+                        {monthGroup.posts.map((post) => (
+                          <Card
+                            key={post.id}
+                            elevation={0}
+                            sx={{
+                              border: "1px solid #e0e0e0",
+                              borderRadius: 2,
+                              transition: "all 0.2s ease",
+                              "&:hover": {
+                                borderColor: "#000",
+                              },
+                            }}
+                          >
+                            <CardActionArea
+                              onClick={() => navigate(`/blog/${post.id}`)}
                             >
-                              <CardActionArea
-                                onClick={() => navigate(`/blog/${post.id}`)}
-                              >
-                                <CardContent>
-                                  <Box
+                              <CardContent>
+                                <Box
+                                  sx={{
+                                    display: "flex",
+                                    justifyContent: "space-between",
+                                    alignItems: "flex-start",
+                                    mb: 1,
+                                    gap: 2,
+                                  }}
+                                >
+                                  <Typography
+                                    variant="h6"
+                                    component="h4"
                                     sx={{
+                                      fontWeight: 600,
                                       display: "flex",
-                                      justifyContent: "space-between",
-                                      alignItems: "flex-start",
-                                      mb: 1,
-                                      gap: 2,
+                                      alignItems: "center",
+                                      gap: 1,
+                                      flex: 1,
+                                      color: "#000",
                                     }}
                                   >
-                                    <Typography
-                                      variant="h6"
-                                      component="h4"
-                                      sx={{
-                                        fontWeight: 600,
-                                        display: "flex",
-                                        alignItems: "center",
-                                        gap: 1,
-                                        flex: 1,
-                                        color: "#000",
-                                      }}
-                                    >
-                                      <ArticleIcon
-                                        sx={{ color: "#000" }}
-                                        fontSize="small"
-                                      />
-                                      {post.title}
-                                    </Typography>
-                                    <Typography
-                                      variant="body2"
-                                      sx={{
-                                        whiteSpace: "nowrap",
-                                        color: "#666",
-                                      }}
-                                    >
-                                      {formatDate(post.date)}
-                                    </Typography>
-                                  </Box>
-
-                                  <Typography
-                                    variant="body1"
-                                    sx={{ mb: 2, color: "#666" }}
-                                  >
-                                    {post.description}
+                                    <ArticleIcon
+                                      sx={{ color: "#000" }}
+                                      fontSize="small"
+                                    />
+                                    {post.title}
                                   </Typography>
+                                  <Typography
+                                    variant="body2"
+                                    sx={{
+                                      whiteSpace: "nowrap",
+                                      color: "#666",
+                                    }}
+                                  >
+                                    {formatDate(post.date)}
+                                  </Typography>
+                                </Box>
 
-                                  {post.tags && post.tags.length > 0 && (
-                                    <>
-                                      <Divider sx={{ mb: 1.5 }} />
-                                      <Stack
-                                        direction="row"
-                                        spacing={1}
-                                        flexWrap="wrap"
-                                        gap={1}
-                                      >
-                                        {post.tags.map((tag) => (
-                                          <Chip
-                                            key={tag}
-                                            label={tag}
-                                            size="small"
-                                            clickable
-                                            onClick={(e) => {
-                                              e.stopPropagation();
-                                              setSelectedTag(tag);
-                                            }}
-                                            sx={{
+                                <Typography
+                                  variant="body1"
+                                  sx={{ mb: 2, color: "#666" }}
+                                >
+                                  {post.description}
+                                </Typography>
+
+                                {post.tags && post.tags.length > 0 && (
+                                  <>
+                                    <Divider sx={{ mb: 1.5 }} />
+                                    <Stack
+                                      direction="row"
+                                      spacing={1}
+                                      flexWrap="wrap"
+                                      gap={1}
+                                    >
+                                      {post.tags.map((tag) => (
+                                        <Chip
+                                          key={tag}
+                                          label={tag}
+                                          size="small"
+                                          clickable
+                                          onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedTag(tag);
+                                          }}
+                                          sx={{
+                                            bgcolor:
+                                              selectedTag === tag
+                                                ? "#000"
+                                                : "#f5f5f5",
+                                            color:
+                                              selectedTag === tag
+                                                ? "#fff"
+                                                : "#000",
+                                            border: "1px solid #e0e0e0",
+                                            "&:hover": {
                                               bgcolor:
                                                 selectedTag === tag
-                                                  ? "#000"
-                                                  : "#f5f5f5",
-                                              color:
-                                                selectedTag === tag
-                                                  ? "#fff"
-                                                  : "#000",
-                                              border: "1px solid #e0e0e0",
-                                              "&:hover": {
-                                                bgcolor:
-                                                  selectedTag === tag
-                                                    ? "#333"
-                                                    : "#e0e0e0",
-                                              },
-                                            }}
-                                          />
-                                        ))}
-                                      </Stack>
-                                    </>
-                                  )}
-                                </CardContent>
-                              </CardActionArea>
-                            </Card>
-                          ))}
-                        </Stack>
-                      </Box>
-                    ))}
-                  </Box>
-                ))
-              )}
-            </Box>
-
-            <Box sx={{ width: "25%", minWidth: "200px" }}>
-              <Paper
-                elevation={0}
-                sx={{
-                  p: 3,
-                  border: "1px solid #e0e0e0",
-                  borderRadius: 2,
-                  position: "sticky",
-                  top: 80,
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  gutterBottom
-                  sx={{ fontWeight: 600, mb: 2, color: "#000" }}
-                >
-                  标签
-                </Typography>
-                <Divider sx={{ mb: 2 }} />
-                <Stack spacing={1}>
-                  <Chip
-                    label="全部"
-                    clickable
-                    onClick={() => setSelectedTag(null)}
-                    sx={{
-                      bgcolor: selectedTag === null ? "#000" : "#f5f5f5",
-                      color: selectedTag === null ? "#fff" : "#000",
-                      border: "1px solid #e0e0e0",
-                      justifyContent: "flex-start",
-                      "&:hover": {
-                        bgcolor: selectedTag === null ? "#333" : "#e0e0e0",
-                      },
-                    }}
-                  />
-                  {allTags.map((tag) => (
-                    <Chip
-                      key={tag}
-                      label={tag}
-                      clickable
-                      onClick={() => setSelectedTag(tag)}
-                      sx={{
-                        bgcolor: selectedTag === tag ? "#000" : "#f5f5f5",
-                        color: selectedTag === tag ? "#fff" : "#000",
-                        border: "1px solid #e0e0e0",
-                        justifyContent: "flex-start",
-                        "&:hover": {
-                          bgcolor: selectedTag === tag ? "#333" : "#e0e0e0",
-                        },
-                      }}
-                    />
+                                                  ? "#333"
+                                                  : "#e0e0e0",
+                                            },
+                                          }}
+                                        />
+                                      ))}
+                                    </Stack>
+                                  </>
+                                )}
+                              </CardContent>
+                            </CardActionArea>
+                          </Card>
+                        ))}
+                      </Stack>
+                    </Box>
                   ))}
-                </Stack>
-              </Paper>
-            </Box>
+                </Box>
+              ))
+            )}
           </Box>
         </Container>
       </Box>
