@@ -59,9 +59,7 @@ export default function BlogArchive() {
             align="center"
             gutterBottom
             sx={{ mb: 3, fontWeight: 600, color: "#000" }}
-          >
-            {selectedTag ? `标签: ${selectedTag}` : "博客归档"}
-          </Typography>
+          ></Typography>
 
           <Paper
             elevation={0}
