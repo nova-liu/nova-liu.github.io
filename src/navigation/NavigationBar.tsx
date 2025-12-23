@@ -36,7 +36,7 @@ export default function NavigationBar() {
             "&:hover": { bgcolor: "#f5f5f5" },
           }}
         >
-          技术文章
+          tech blog
         </Button>
         <Button
           component={Link}
@@ -49,7 +49,7 @@ export default function NavigationBar() {
             "&:hover": { bgcolor: "#f5f5f5" },
           }}
         >
-          书籍
+          books
         </Button>
       </Toolbar>
     </AppBar>

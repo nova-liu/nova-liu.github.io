@@ -18,7 +18,8 @@ export default function BookList() {
           ></Typography>
 
           <Typography variant="body1" sx={{ mb: 6, color: "#666" }}>
-            这是我读过的书，推荐给大家
+            These are some of my favorite books on programming, technology, and
+            life. Click on the book covers to view more details on Douban.
           </Typography>
 
           <Box
