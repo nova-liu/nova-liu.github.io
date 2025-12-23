@@ -207,3 +207,62 @@ export function getArchiveGroups(): ArchiveGroup[] {
 
   return result;
 }
+
+// 获取所有唯一的标签
+export function getAllTags(): string[] {
+  const tagsSet = new Set<string>();
+  blogPosts.forEach((post) => {
+    if (post.tags) {
+      post.tags.forEach((tag) => tagsSet.add(tag));
+    }
+  });
+  return Array.from(tagsSet).sort((a, b) => a.localeCompare(b));
+}
+
+// 根据标签筛选文章
+export function filterPostsByTag(tag: string | null): ArchiveGroup[] {
+  if (!tag) {
+    return getArchiveGroups();
+  }
+
+  const filteredPosts = blogPosts.filter((post) => post.tags?.includes(tag));
+
+  const groups: Map<number, Map<number, BlogPost[]>> = new Map();
+
+  filteredPosts.forEach((post) => {
+    const date = new Date(post.date);
+    const year = date.getFullYear();
+    const month = date.getMonth() + 1;
+
+    if (!groups.has(year)) {
+      groups.set(year, new Map());
+    }
+
+    const yearGroup = groups.get(year)!;
+    if (!yearGroup.has(month)) {
+      yearGroup.set(month, []);
+    }
+
+    yearGroup.get(month)!.push(post);
+  });
+
+  const result: ArchiveGroup[] = [];
+  const sortedYears = Array.from(groups.keys()).sort((a, b) => b - a);
+
+  sortedYears.forEach((year) => {
+    const monthsMap = groups.get(year)!;
+    const sortedMonths = Array.from(monthsMap.keys()).sort((a, b) => b - a);
+
+    result.push({
+      year,
+      months: sortedMonths.map((month) => ({
+        month,
+        posts: monthsMap
+          .get(month)!
+          .sort((a, b) => b.date.localeCompare(a.date)),
+      })),
+    });
+  });
+
+  return result;
+}
