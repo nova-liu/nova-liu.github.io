@@ -14,8 +14,12 @@ export default function BookList() {
             component="h1"
             align="center"
             gutterBottom
-            sx={{ mb: 6, fontWeight: 600, color: "#000" }}
+            sx={{ mb: 2, fontWeight: 600, color: "#000" }}
           ></Typography>
+
+          <Typography variant="body1" sx={{ mb: 6, color: "#666" }}>
+            这是我读过的书，推荐给大家
+          </Typography>
 
           <Box
             sx={{

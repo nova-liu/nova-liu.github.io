@@ -45,4 +45,19 @@ export const books: Book[] = [
     coverImage: "/book/mysql.jpg",
     doubanUrl: "https://book.douban.com/subject/23008813/",
   },
+  {
+    id: "8",
+    coverImage: "/book/little-prince.jpg",
+    doubanUrl: "https://book.douban.com/subject/1084336/",
+  },
+  {
+    id: "9",
+    coverImage: "/book/steve.jpg",
+    doubanUrl: "https://book.douban.com/subject/25810506/",
+  },
+  {
+    id: "10",
+    coverImage: "/book/wander.jpg",
+    doubanUrl: "https://book.douban.com/subject/25882167/",
+  },
 ];
