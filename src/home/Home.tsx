@@ -104,18 +104,12 @@ export default function Home() {
                     sx={{ width: 32, height: 32, mt: 0.5 }}
                   />
                   <Box sx={{ flex: 1 }}>
-                    <Stack
-                      direction="row"
-                      justifyContent="space-between"
-                      sx={{ mb: 1.5 }}
+                    <Typography
+                      variant="body1"
+                      sx={{ fontWeight: 600, mb: 1.5 }}
                     >
-                      <Typography variant="body1" sx={{ fontWeight: 600 }}>
-                        {skill.name}
-                      </Typography>
-                      <Typography variant="body2" sx={{ color: "#666" }}>
-                        {skill.level}%
-                      </Typography>
-                    </Stack>
+                      {skill.name}
+                    </Typography>
                     <LinearProgress
                       variant="determinate"
                       value={skill.level}
