@@ -65,4 +65,9 @@ export const books: Book[] = [
     coverImage: "/book/you-dont-know-js-get-start.jpg",
     doubanUrl: "https://book.douban.com/subject/35374384/",
   },
+  {
+    id: "12",
+    coverImage: "/book/ts-deep-dive.jpg",
+    doubanUrl: "https://book.douban.com/subject/27124985/",
+  },
 ];
