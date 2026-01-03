@@ -1,73 +1,99 @@
-# React + TypeScript + Vite
+# Nova Liu's Blog & Book Site
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a personal website built with **React**, **TypeScript**, and **Vite**. It features a blog and book archive, with content written in Markdown and rendered dynamically. The site is designed for fast performance, modern UI, and easy content management.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ⚡️ Fast, modern React + Vite stack
+- 📚 Blog and book sections, with Markdown support
+- 📝 Easy content updates via Markdown files
+- 🌈 Material UI for a clean, responsive design
+- 🔍 Syntax highlighting for code blocks
+- 🗂 Organized folder structure for scalability
 
-## React Compiler
+## Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- [React](https://react.dev/) 19
+- [Vite](https://vitejs.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Material UI](https://mui.com/)
+- [React Router](https://reactrouter.com/)
+- [React Markdown](https://github.com/remarkjs/react-markdown)
+- [Highlight.js](https://highlightjs.org/) for code
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18+ recommended)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/nova-liu/nova-liu.github.io.git
+cd nova-liu.github.io
+npm install
+# or
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
+# or
+yarn dev
 ```
+
+Open [http://localhost:5173](http://localhost:5173) to view the site.
+
+### Build
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Lint
+
+```bash
+npm run lint
+# or
+yarn lint
+```
+
+## Project Structure
+
+```
+├── public/
+│   ├── blogs/           # Blog posts in Markdown
+│   ├── book/            # Book content in Markdown
+│   └── logos/           # Site logos and images
+├── src/
+│   ├── blog/            # Blog components & config
+│   ├── book/            # Book components & config
+│   ├── home/            # Home page
+│   ├── navigation/      # Navigation bar
+│   ├── App.tsx          # Main app component
+│   └── main.tsx         # Entry point
+├── index.html           # HTML template
+├── package.json         # Project metadata & scripts
+├── vite.config.ts       # Vite configuration
+└── README.md            # This file
+```
+
+## Content Management
+
+- Add blog posts to `public/blogs/<topic>/<post>.md`
+- Add book content to `public/book/`
+- Update navigation and config in `src/blog/blogConfig.ts` and `src/book/bookConfig.ts`
+
+## Contributing
+
+Pull requests and issues are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+## License
+
+MIT
