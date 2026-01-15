@@ -1,58 +1,37 @@
 # .github/workflows/deploy.yml
 name: Deploy to GitHub Pages
 
-# 触发条件：推送到 main/master 分支时执行
 on:
   push:
-    branches: ["main"] # 替换为你的主分支名（master/main）
+    branches:
+      - master
 
-# 权限配置（必须）：授予 Actions 部署 Pages 的权限
 permissions:
-  contents: read # 读取代码权限
-  pages: write # 写入 Pages 权限
-  id-token: write # 身份验证权限
+  contents: write
 
-# 工作流任务
 jobs:
-  # 第一步：构建项目
-  build:
-    runs-on: ubuntu-latest # 使用最新的 Ubuntu 环境
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      # 1. 拉取仓库代码
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. 设置 Node.js 环境（推荐和你本地一致的版本）
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20" # 推荐 18+/20+
-          cache: "npm" # 缓存 npm 依赖，加速构建
+          node-version: "20"
+          cache: "npm"
 
-      # 3. 安装依赖
       - name: Install dependencies
-        run: npm ci # 比 npm install 更严格，适合 CI 环境
+        run: npm ci
 
-      # 4. 构建项目
-      - name: Build project
+      - name: Build
         run: npm run build
 
-      # 5. 上传构建产物（供下一步部署使用）
-      - name: Upload build artifacts
-        uses: actions/upload-pages-artifact@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          path: "./dist" # 指定构建产物目录
-
-  # 第二步：部署到 GitHub Pages（依赖第一步完成）
-  deploy:
-    needs: build # 依赖 build 任务完成
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages # 必须指定这个环境名
-      url: ${{ steps.deployment.outputs.page_url }} # 部署后输出访问地址
-
-    steps:
-      # 核心：使用最新的 deploy-pages Action 部署
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4 # 你提到的最新版本
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
