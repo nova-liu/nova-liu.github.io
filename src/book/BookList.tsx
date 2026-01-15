@@ -1,92 +1,80 @@
-import { Container, Box, Typography } from "@mui/material";
-import { MenuBook as BookIcon } from "@mui/icons-material";
 import NavigationBar from "../navigation/NavigationBar";
 import { books } from "./bookConfig";
+import "./BookList.css";
+
+// Book Icon
+const BookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+  </svg>
+);
+
+const ExternalLinkIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+    <polyline points="15 3 21 3 21 9"/>
+    <line x1="10" y1="14" x2="21" y2="3"/>
+  </svg>
+);
 
 export default function BookList() {
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#fafafa" }}>
+    <div className="book-list">
       <NavigationBar />
-      <Box sx={{ pt: 8 }}>
-        <Container maxWidth="lg" sx={{ py: 6 }}>
-          <Typography
-            variant="h3"
-            component="h1"
-            align="center"
-            gutterBottom
-            sx={{ mb: 2, fontWeight: 600, color: "#000" }}
-          ></Typography>
+      
+      <main className="book-list__content">
+        <div className="book-list__container">
+          {/* Header */}
+          <header className="book-list__header">
+            <h1 className="book-list__title">
+              <span className="book-list__title-icon">📚</span>
+              Books
+            </h1>
+            <p className="book-list__description">
+              These are some of my favorite books on programming, technology, and life. 
+              Click on the book covers to view more details on Douban.
+            </p>
+          </header>
 
-          <Typography variant="body1" sx={{ mb: 6, color: "#666" }}>
-            These are some of my favorite books on programming, technology, and
-            life. Click on the book covers to view more details on Douban.
-          </Typography>
-
-          <Box
-            sx={{
-              display: "grid",
-              gridTemplateColumns: {
-                xs: "repeat(2, 1fr)",
-                sm: "repeat(3, 1fr)",
-                md: "repeat(5, 1fr)",
-              },
-              gap: 4,
-            }}
-          >
-            {books.map((book) => (
-              <Box
+          {/* Book Grid */}
+          <div className="book-list__grid">
+            {books.map((book, index) => (
+              <a
                 key={book.id}
-                component="a"
                 href={book.doubanUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                sx={{
-                  display: "block",
-                  textDecoration: "none",
-                  transition: "all 0.3s ease",
-                  "&:hover": {
-                    transform: "translateY(-4px)",
-                    opacity: 0.8,
-                  },
-                }}
+                className="book-list__card"
+                style={{ animationDelay: `${index * 0.05}s` }}
               >
-                {/* Book Cover */}
-                <Box
-                  component="img"
-                  src={book.coverImage}
-                  alt={`Book ${book.id}`}
-                  sx={{
-                    width: "100%",
-                    aspectRatio: "3/4",
-                    objectFit: "cover",
-                    bgcolor: "#f5f5f5",
-                    borderRadius: 1,
-                  }}
-                  onError={(e: React.SyntheticEvent<HTMLImageElement>) => {
-                    (e.target as HTMLImageElement).style.display = "none";
-                    (
-                      (e.target as HTMLImageElement).nextSibling as HTMLElement
-                    ).style.display = "flex";
-                  }}
-                />
-                <Box
-                  sx={{
-                    width: "100%",
-                    aspectRatio: "3/4",
-                    bgcolor: "#f5f5f5",
-                    display: "none",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    borderRadius: 1,
-                  }}
-                >
-                  <BookIcon sx={{ fontSize: 60, color: "#ccc" }} />
-                </Box>
-              </Box>
+                <div className="book-list__cover">
+                  <img
+                    src={book.coverImage}
+                    alt={`Book ${book.id}`}
+                    className="book-list__cover-image"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement;
+                      target.style.display = "none";
+                      const fallback = target.nextSibling as HTMLElement;
+                      if (fallback) fallback.style.display = "flex";
+                    }}
+                  />
+                  <div className="book-list__cover-fallback">
+                    <BookIcon />
+                  </div>
+                  <div className="book-list__overlay">
+                    <span className="book-list__view-link">
+                      <ExternalLinkIcon />
+                      View on Douban
+                    </span>
+                  </div>
+                </div>
+              </a>
             ))}
-          </Box>
-        </Container>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }

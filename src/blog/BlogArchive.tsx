@@ -1,20 +1,28 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { filterPostsByTag, getAllTags } from "./blogConfig";
-import {
-  Container,
-  Typography,
-  Box,
-  Card,
-  CardContent,
-  CardActionArea,
-  Chip,
-  Stack,
-  Divider,
-  Paper,
-} from "@mui/material";
-import { Article as ArticleIcon } from "@mui/icons-material";
 import NavigationBar from "../navigation/NavigationBar";
+import "./BlogArchive.css";
+
+// Icons
+const ArticleIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/>
+    <polyline points="14 2 14 8 20 8"/>
+    <line x1="16" y1="13" x2="8" y2="13"/>
+    <line x1="16" y1="17" x2="8" y2="17"/>
+    <line x1="10" y1="9" x2="8" y2="9"/>
+  </svg>
+);
+
+const CalendarIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+    <line x1="16" y1="2" x2="16" y2="6"/>
+    <line x1="8" y1="2" x2="8" y2="6"/>
+    <line x1="3" y1="10" x2="21" y2="10"/>
+  </svg>
+);
 
 export default function BlogArchive() {
   const navigate = useNavigate();
@@ -24,242 +32,120 @@ export default function BlogArchive() {
 
   const getMonthName = (month: number) => {
     const months = [
-      "一月",
-      "二月",
-      "三月",
-      "四月",
-      "五月",
-      "六月",
-      "七月",
-      "八月",
-      "九月",
-      "十月",
-      "十一月",
-      "十二月",
+      "一月", "二月", "三月", "四月", "五月", "六月",
+      "七月", "八月", "九月", "十月", "十一月", "十二月",
     ];
     return months[month - 1];
   };
 
   const formatDate = (dateStr: string) => {
     const date = new Date(dateStr);
-    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
-      2,
-      "0"
-    )}-${String(date.getDate()).padStart(2, "0")}`;
+    return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
   };
 
   return (
-    <Box sx={{ minHeight: "100vh", bgcolor: "#fafafa" }}>
+    <div className="blog-archive">
       <NavigationBar />
-      <Box sx={{ pt: 8 }}>
-        <Container maxWidth="md" sx={{ py: 6 }}>
-          <Typography
-            variant="h3"
-            component="h1"
-            align="center"
-            gutterBottom
-            sx={{ mb: 3, fontWeight: 600, color: "#000" }}
-          ></Typography>
+      
+      <main className="blog-archive__content">
+        <div className="blog-archive__container">
+          {/* Header */}
+          <header className="blog-archive__header">
+            <h1 className="blog-archive__title">
+              <span className="blog-archive__title-icon">📝</span>
+              Tech Blog
+            </h1>
+            <p className="blog-archive__description">
+              技术文章、学习笔记和编程心得
+            </p>
+          </header>
 
-          <Paper
-            elevation={0}
-            sx={{
-              p: 2,
-              mb: 4,
-              border: "1px solid #e0e0e0",
-              borderRadius: 2,
-            }}
-          >
-            <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1 }}>
-              <Chip
-                label="全部"
-                clickable
-                size="small"
-                onClick={() => setSelectedTag(null)}
-                sx={{
-                  bgcolor: selectedTag === null ? "#000" : "#f5f5f5",
-                  color: selectedTag === null ? "#fff" : "#000",
-                  border: "1px solid #e0e0e0",
-                  "&:hover": {
-                    bgcolor: selectedTag === null ? "#333" : "#e0e0e0",
-                  },
-                }}
-              />
-              {allTags.map((tag) => (
-                <Chip
-                  key={tag}
-                  label={tag}
-                  size="small"
-                  clickable
-                  onClick={() => setSelectedTag(tag)}
-                  sx={{
-                    bgcolor: selectedTag === tag ? "#000" : "#f5f5f5",
-                    color: selectedTag === tag ? "#fff" : "#000",
-                    border: "1px solid #e0e0e0",
-                    "&:hover": {
-                      bgcolor: selectedTag === tag ? "#333" : "#e0e0e0",
-                    },
-                  }}
-                />
-              ))}
-            </Box>
-          </Paper>
-
-          <Box>
-            {archives.length === 0 ? (
-              <Typography
-                variant="h6"
-                align="center"
-                sx={{ color: "#666", py: 4 }}
+          {/* Tags Filter */}
+          <div className="blog-archive__filter">
+            <button
+              className={`blog-archive__tag ${selectedTag === null ? "blog-archive__tag--active" : ""}`}
+              onClick={() => setSelectedTag(null)}
+            >
+              全部
+            </button>
+            {allTags.map((tag) => (
+              <button
+                key={tag}
+                className={`blog-archive__tag ${selectedTag === tag ? "blog-archive__tag--active" : ""}`}
+                onClick={() => setSelectedTag(tag)}
               >
-                没有找到相关文章
-              </Typography>
+                {tag}
+              </button>
+            ))}
+          </div>
+
+          {/* Posts List */}
+          <div className="blog-archive__posts">
+            {archives.length === 0 ? (
+              <div className="blog-archive__empty">
+                <span className="blog-archive__empty-icon">🔍</span>
+                <p>没有找到相关文章</p>
+              </div>
             ) : (
               archives.map((yearGroup) => (
-                <Box key={yearGroup.year} sx={{ mb: 6 }}>
-                  <Typography
-                    variant="h4"
-                    component="h2"
-                    gutterBottom
-                    sx={{
-                      fontWeight: 600,
-                      color: "#000",
-                      borderBottom: "2px solid #000",
-                      pb: 1,
-                      mb: 3,
-                    }}
-                  >
-                    {yearGroup.year} 年
-                  </Typography>
-
+                <section key={yearGroup.year} className="blog-archive__year-group">
+                  <h2 className="blog-archive__year">{yearGroup.year} 年</h2>
+                  
                   {yearGroup.months.map((monthGroup) => (
-                    <Box key={monthGroup.month} sx={{ mb: 4, ml: 2 }}>
-                      <Typography
-                        variant="h5"
-                        component="h3"
-                        gutterBottom
-                        sx={{ fontWeight: 500, mb: 2, color: "#000" }}
-                      >
-                        {getMonthName(monthGroup.month)}
-                      </Typography>
-
-                      <Stack spacing={2} sx={{ ml: 2 }}>
-                        {monthGroup.posts.map((post) => (
-                          <Card
+                    <div key={monthGroup.month} className="blog-archive__month-group">
+                      <h3 className="blog-archive__month">{getMonthName(monthGroup.month)}</h3>
+                      
+                      <div className="blog-archive__post-list">
+                        {monthGroup.posts.map((post, index) => (
+                          <article
                             key={post.id}
-                            elevation={0}
-                            sx={{
-                              border: "1px solid #e0e0e0",
-                              borderRadius: 2,
-                              transition: "all 0.2s ease",
-                              "&:hover": {
-                                borderColor: "#000",
-                              },
-                            }}
+                            className="blog-archive__post-card"
+                            onClick={() => navigate(`/blog/${post.id}`)}
+                            style={{ animationDelay: `${index * 0.05}s` }}
                           >
-                            <CardActionArea
-                              onClick={() => navigate(`/blog/${post.id}`)}
-                            >
-                              <CardContent>
-                                <Box
-                                  sx={{
-                                    display: "flex",
-                                    justifyContent: "space-between",
-                                    alignItems: "flex-start",
-                                    mb: 1,
-                                    gap: 2,
-                                  }}
-                                >
-                                  <Typography
-                                    variant="h6"
-                                    component="h4"
-                                    sx={{
-                                      fontWeight: 600,
-                                      display: "flex",
-                                      alignItems: "center",
-                                      gap: 1,
-                                      flex: 1,
-                                      color: "#000",
-                                    }}
-                                  >
-                                    <ArticleIcon
-                                      sx={{ color: "#000" }}
-                                      fontSize="small"
-                                    />
-                                    {post.title}
-                                  </Typography>
-                                  <Typography
-                                    variant="body2"
-                                    sx={{
-                                      whiteSpace: "nowrap",
-                                      color: "#666",
-                                    }}
-                                  >
-                                    {formatDate(post.date)}
-                                  </Typography>
-                                </Box>
-
-                                <Typography
-                                  variant="body1"
-                                  sx={{ mb: 2, color: "#666" }}
-                                >
-                                  {post.description}
-                                </Typography>
-
+                            <div className="blog-archive__post-icon">
+                              <ArticleIcon />
+                            </div>
+                            
+                            <div className="blog-archive__post-content">
+                              <h4 className="blog-archive__post-title">{post.title}</h4>
+                              <p className="blog-archive__post-description">{post.description}</p>
+                              
+                              <div className="blog-archive__post-meta">
+                                <span className="blog-archive__post-date">
+                                  <CalendarIcon />
+                                  {formatDate(post.date)}
+                                </span>
+                                
                                 {post.tags && post.tags.length > 0 && (
-                                  <>
-                                    <Divider sx={{ mb: 1.5 }} />
-                                    <Stack
-                                      direction="row"
-                                      spacing={1}
-                                      flexWrap="wrap"
-                                      gap={1}
-                                    >
-                                      {post.tags.map((tag) => (
-                                        <Chip
-                                          key={tag}
-                                          label={tag}
-                                          size="small"
-                                          clickable
-                                          onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedTag(tag);
-                                          }}
-                                          sx={{
-                                            bgcolor:
-                                              selectedTag === tag
-                                                ? "#000"
-                                                : "#f5f5f5",
-                                            color:
-                                              selectedTag === tag
-                                                ? "#fff"
-                                                : "#000",
-                                            border: "1px solid #e0e0e0",
-                                            "&:hover": {
-                                              bgcolor:
-                                                selectedTag === tag
-                                                  ? "#333"
-                                                  : "#e0e0e0",
-                                            },
-                                          }}
-                                        />
-                                      ))}
-                                    </Stack>
-                                  </>
+                                  <div className="blog-archive__post-tags">
+                                    {post.tags.map((tag) => (
+                                      <span
+                                        key={tag}
+                                        className={`blog-archive__post-tag ${selectedTag === tag ? "blog-archive__post-tag--active" : ""}`}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setSelectedTag(tag);
+                                        }}
+                                      >
+                                        {tag}
+                                      </span>
+                                    ))}
+                                  </div>
                                 )}
-                              </CardContent>
-                            </CardActionArea>
-                          </Card>
+                              </div>
+                            </div>
+                          </article>
                         ))}
-                      </Stack>
-                    </Box>
+                      </div>
+                    </div>
                   ))}
-                </Box>
+                </section>
               ))
             )}
-          </Box>
-        </Container>
-      </Box>
-    </Box>
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
