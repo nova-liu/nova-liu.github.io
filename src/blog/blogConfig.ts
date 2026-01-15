@@ -41,7 +41,7 @@ export const blogPosts: BlogPost[] = [
     date: "2023-06-26",
     description: "深入理解递归函数的原理和应用",
     path: "/blogs/recursive-function/recursive-function.md",
-    tags: ["算法", "递归"],
+    tags: ["Algorithm", "Recursion"],
   },
   {
     id: "mongodb",
@@ -49,7 +49,7 @@ export const blogPosts: BlogPost[] = [
     date: "2023-03-17",
     description: "从开发者的角度介绍 MongoDB 中最重要的特性",
     path: "/blogs/mongodb/mongodb.md",
-    tags: ["数据库", "MongoDB", "NoSQL"],
+    tags: ["Database", "MongoDB", "NoSQL"],
   },
   {
     id: "dns",
@@ -57,7 +57,7 @@ export const blogPosts: BlogPost[] = [
     date: "2022-09-19",
     description: "了解 DNS 域名解析的工作原理",
     path: "/blogs/dns/dns.md",
-    tags: ["网络", "DNS"],
+    tags: ["Network", "DNS"],
   },
   {
     id: "kubernetes-programming",
@@ -65,7 +65,7 @@ export const blogPosts: BlogPost[] = [
     date: "2022-02-19",
     description: "Kubernetes 开发和编程指南",
     path: "/blogs/kubernetes-programming/kubernetes-programming.md",
-    tags: ["Kubernetes", "云原生", "Go"],
+    tags: ["Kubernetes", "Cloud Native", "Go"],
   },
   {
     id: "grpc",
@@ -73,7 +73,7 @@ export const blogPosts: BlogPost[] = [
     date: "2021-11-10",
     description: "入门 gRPC 的原理和使用方法",
     path: "/blogs/grpc/grpc.md",
-    tags: ["RPC", "微服务", "后端"],
+    tags: ["RPC", "Microservices", "Backend"],
   },
   {
     id: "cyber-security",
@@ -81,7 +81,7 @@ export const blogPosts: BlogPost[] = [
     date: "2021-09-25",
     description: "网络安全基础知识和最佳实践",
     path: "/blogs/cyber-security/cyber-security.md",
-    tags: ["安全", "网络"],
+    tags: ["Security", "Network"],
   },
 
   {
@@ -90,7 +90,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-07-22",
     description: "Go 语言编程基础和进阶技巧",
     path: "/blogs/go-programming/go-programming.md",
-    tags: ["Go", "编程语言"],
+    tags: ["Go", "Programming"],
   },
   {
     id: "cpu-cache",
@@ -98,7 +98,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-05-22",
     description: "理解 CPU 缓存的工作原理和性能优化",
     path: "/blogs/cpu-cache/cpu-cache.md",
-    tags: ["计算机组成", "性能优化"],
+    tags: ["Computer Architecture", "Performance"],
   },
   {
     id: "alignment-data",
@@ -106,7 +106,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-04-12",
     description: "数据对齐的原理和重要性",
     path: "/blogs/alignment-data/alignment-data.md",
-    tags: ["计算机组成", "内存"],
+    tags: ["Computer Architecture", "Memory"],
   },
   {
     id: "network",
@@ -114,7 +114,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-04-05",
     description: "计算机网络基础知识和协议详解",
     path: "/blogs/network/network.md",
-    tags: ["网络", "TCP/IP"],
+    tags: ["Network", "TCP/IP"],
   },
   {
     id: "mysql0x3",
@@ -122,7 +122,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-03-02",
     description: "MySQL 索引和查询优化",
     path: "/blogs/mysql0x3/mysql0x3.md",
-    tags: ["数据库", "MySQL", "索引"],
+    tags: ["Database", "MySQL", "Index"],
   },
   {
     id: "mysql0x2",
@@ -130,7 +130,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-02-25",
     description: "MySQL 事务和锁机制",
     path: "/blogs/mysql0x2/mysql0x2.md",
-    tags: ["数据库", "MySQL", "事务"],
+    tags: ["Database", "MySQL", "Transaction"],
   },
   {
     id: "mysql0x1",
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-02-23",
     description: "MySQL 架构和存储引擎",
     path: "/blogs/mysql0x1/mysql0x1.md",
-    tags: ["数据库", "MySQL"],
+    tags: ["Database", "MySQL"],
   },
   {
     id: "mysql0x0",
@@ -146,7 +146,7 @@ export const blogPosts: BlogPost[] = [
     date: "2020-02-19",
     description: "MySQL 数据库基础知识",
     path: "/blogs/mysql0x0/mysql0x0.md",
-    tags: ["数据库", "MySQL"],
+    tags: ["Database", "MySQL"],
   },
   {
     id: "data-lab",
@@ -154,7 +154,7 @@ export const blogPosts: BlogPost[] = [
     date: "2019-03-09",
     description: "数据结构和算法实验",
     path: "/blogs/data-lab/data-lab.md",
-    tags: ["算法", "数据结构"],
+    tags: ["Algorithm", "Data Structure"],
   },
 ];
 
