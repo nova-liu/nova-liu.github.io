@@ -61,7 +61,7 @@ export default function Home() {
             </div>
             <h1 className="home__title">Hi, I'm Nova Liu</h1>
             <p className="home__subtitle">
-              Service Developer · Web Developer · Badminton Lover
+              Program Engineer · Badminton Lover
             </p>
             <div className="home__social">
               {socialLinks.map((social) => (
@@ -108,7 +108,7 @@ export default function Home() {
                       className="home__skill-logo"
                     />
                     <span className="home__skill-name">{skill.name}</span>
-                    <span className="home__skill-level">{skill.level}%</span>
+                    {/* <span className="home__skill-level">{skill.level}%</span> */}
                   </div>
                   <div className="home__skill-bar">
                     <div

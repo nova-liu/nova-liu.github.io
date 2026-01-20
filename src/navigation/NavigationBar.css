@@ -21,11 +21,12 @@
   gap: 1rem;
   padding: 0.5rem 1rem;
   background: var(--island-bg-color);
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border-radius: var(--border-radius-xl);
   box-shadow: var(--island-shadow);
-  border: 2px solid var(--default-border-color);
+  border: 1px solid var(--default-border-color);
   pointer-events: auto;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); /* Safari support */
 }
 
 .navbar__logo {
@@ -45,7 +46,6 @@
   font-size: 1.125rem;
   font-weight: 700;
   color: var(--color-primary);
-  font-family: var(--hand-drawn-font);
 }
 
 .navbar__nav {
@@ -65,9 +65,8 @@
   font-weight: 500;
   color: var(--text-secondary-color);
   text-decoration: none;
-  border-radius: 15px 225px 15px 255px/255px 15px 225px 15px;
+  border-radius: var(--border-radius-md);
   transition: all 0.2s ease;
-  font-family: var(--hand-drawn-font);
 }
 
 .navbar__link:hover {

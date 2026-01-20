@@ -83,13 +83,12 @@ export default function BookList() {
                   <div className="book-list__cover-fallback">
                     <BookIcon />
                   </div>
-                  <div className="book-list__overlay">
-                    <span className="book-list__view-link">
-                      <ExternalLinkIcon />
-                      View on Douban
-                    </span>
-                  </div>
                 </div>
+
+                {/* <div className="book-list__info">
+                  <h3 className="book-list__book-title">{book.title}</h3>
+                  <p className="book-list__author">{book.author}</p>
+                </div> */}
               </a>
             ))}
           </div>
