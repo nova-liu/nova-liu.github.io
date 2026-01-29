@@ -140,6 +140,11 @@
   box-shadow: var(--island-shadow);
 }
 
+.blog__article embed {
+  border: none;
+  outline: none;
+}
+
 .blog__article code {
   font-family: "SF Mono", "Menlo", "Monaco", "Courier New", monospace;
   font-size: 0.875em;

@@ -9,6 +9,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "intro-to-llm",
+    title: "Introduction to Large Language Models (LLM)",
+    date: "2026-01-29",
+    description:
+      "Study notes on Introduction to Large Language Models (LLM) by Andrej Karpathy",
+    path: "/blogs/intro-to-llm/intro-to-llm.md",
+    tags: ["LLM", "AI"],
+  },
+  {
     id: "temporal",
     title: "Temporal: A Powerful Workflow Orchestration Engine",
     date: "2025-11-05",
@@ -158,7 +167,6 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
-// 按年份和月份分组文章
 export interface ArchiveGroup {
   year: number;
   months: {

@@ -4,27 +4,6 @@ import { filterPostsByTag, getAllTags } from "./blogConfig";
 import NavigationBar from "../navigation/NavigationBar";
 import "./BlogArchive.css";
 
-// Icons
-const ArticleIcon = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="2"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-  >
-    <path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z" />
-    <polyline points="14 2 14 8 20 8" />
-    <line x1="16" y1="13" x2="8" y2="13" />
-    <line x1="16" y1="17" x2="8" y2="17" />
-    <line x1="10" y1="9" x2="8" y2="9" />
-  </svg>
-);
-
 const CalendarIcon = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -52,18 +31,18 @@ export default function BlogArchive() {
 
   const getMonthName = (month: number) => {
     const months = [
-      "一月",
-      "二月",
-      "三月",
-      "四月",
-      "五月",
-      "六月",
-      "七月",
-      "八月",
-      "九月",
-      "十月",
-      "十一月",
-      "十二月",
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
     return months[month - 1];
   };
@@ -72,7 +51,7 @@ export default function BlogArchive() {
     const date = new Date(dateStr);
     return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(
       2,
-      "0"
+      "0",
     )}-${String(date.getDate()).padStart(2, "0")}`;
   };
 
@@ -98,7 +77,7 @@ export default function BlogArchive() {
               }`}
               onClick={() => setSelectedTag(null)}
             >
-              全部
+              All
             </button>
             {allTags.map((tag) => (
               <button
@@ -118,7 +97,7 @@ export default function BlogArchive() {
             {archives.length === 0 ? (
               <div className="blog-archive__empty">
                 <span className="blog-archive__empty-icon">🔍</span>
-                <p>没有找到相关文章</p>
+                <p>no posts found</p>
               </div>
             ) : (
               archives.map((yearGroup) => (
@@ -126,7 +105,7 @@ export default function BlogArchive() {
                   key={yearGroup.year}
                   className="blog-archive__year-group"
                 >
-                  <h2 className="blog-archive__year">{yearGroup.year} 年</h2>
+                  <h2 className="blog-archive__year">{yearGroup.year}</h2>
 
                   {yearGroup.months.map((monthGroup) => (
                     <div
@@ -145,10 +124,6 @@ export default function BlogArchive() {
                             onClick={() => navigate(`/blog/${post.id}`)}
                             style={{ animationDelay: `${index * 0.05}s` }}
                           >
-                            <div className="blog-archive__post-icon">
-                              <ArticleIcon />
-                            </div>
-
                             <div className="blog-archive__post-content">
                               <h4 className="blog-archive__post-title">
                                 {post.title}

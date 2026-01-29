@@ -11,16 +11,36 @@ import "./Blog.css";
 
 // Icons
 const ArrowLeftIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="19" y1="12" x2="5" y2="12"/>
-    <polyline points="12 19 5 12 12 5"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="19" y1="12" x2="5" y2="12" />
+    <polyline points="12 19 5 12 12 5" />
   </svg>
 );
 
 const ArrowUpIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="12" y1="19" x2="12" y2="5"/>
-    <polyline points="5 12 12 5 19 12"/>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="20"
+    height="20"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <line x1="12" y1="19" x2="12" y2="5" />
+    <polyline points="5 12 12 5 19 12" />
   </svg>
 );
 
@@ -65,13 +85,13 @@ export default function Blog() {
   return (
     <div className="blog">
       <NavigationBar />
-      
+
       <main className="blog__content">
         <div className="blog__container">
           {/* Back Button */}
           <button className="blog__back-button" onClick={handleBackToArchive}>
             <ArrowLeftIcon />
-            <span>返回文章列表</span>
+            <span>go back</span>
           </button>
 
           {/* Article Header */}
@@ -83,7 +103,9 @@ export default function Blog() {
                 {currentPost.tags && currentPost.tags.length > 0 && (
                   <div className="blog__tags">
                     {currentPost.tags.map((tag) => (
-                      <span key={tag} className="blog__tag">{tag}</span>
+                      <span key={tag} className="blog__tag">
+                        {tag}
+                      </span>
                     ))}
                   </div>
                 )}
@@ -105,7 +127,7 @@ export default function Blog() {
           <footer className="blog__footer">
             <button className="blog__back-button" onClick={handleBackToArchive}>
               <ArrowLeftIcon />
-              <span>返回文章列表</span>
+              <span>go back</span>
             </button>
           </footer>
         </div>
