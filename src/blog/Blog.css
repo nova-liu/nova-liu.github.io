@@ -157,7 +157,7 @@
 .blog__article pre {
   margin: 1.5rem 0;
   padding: 1rem 1.25rem;
-  background: #0d1117;
+  background: var(--color-gray-100);
   border-radius: var(--border-radius-md);
   overflow-x: auto;
 }
@@ -165,7 +165,7 @@
 .blog__article pre code {
   padding: 0;
   background: transparent;
-  color: #c9d1d9;
+  color: var(--color-gray-10);
   font-size: 0.875rem;
   line-height: 1.6;
 }

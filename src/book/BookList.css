@@ -1,4 +1,13 @@
 .book-list {
+  min-height: 100vh;
+  background: var(--default-bg-color);
+}
+
+.book-list__content {
+  padding-top: 5rem;
+}
+
+.book-list__container {
   padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -125,11 +134,11 @@
 }
 
 .book-list__status--reading {
-  color: #007aff;
+  color: var(--color-system-blue);
 }
 
 .book-list__status--completed {
-  color: #34c759;
+  color: var(--color-system-green);
 }
 
 .book-list__review {
