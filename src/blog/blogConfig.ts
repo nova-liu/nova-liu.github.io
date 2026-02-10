@@ -9,6 +9,15 @@ export interface BlogPost {
 
 export const blogPosts: BlogPost[] = [
   {
+    id: "deep-dive-into-llm",
+    title: "Deep dive into LLMs like GPT",
+    date: "2026-02-10",
+    description:
+      "Study notes on Deep dive into LLMs like GPT by Andrej Karpathy",
+    path: "/blogs/deep-dive-into-llm/deep-dive-into-llm.md",
+    tags: ["LLM", "AI"],
+  },
+  {
     id: "intro-to-llm",
     title: "Introduction to Large Language Models (LLM)",
     date: "2026-01-29",
