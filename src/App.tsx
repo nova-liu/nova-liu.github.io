@@ -3,6 +3,7 @@ import Home from "./home/Home.tsx";
 import Blog from "./blog/Blog.tsx";
 import BlogArchive from "./blog/BlogArchive.tsx";
 import BookList from "./book/BookList.tsx";
+import ProductList from "./product/ProductList.tsx";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Route path="/blog" element={<BlogArchive />} />
       <Route path="/blog/:id" element={<Blog />} />
       <Route path="/book" element={<BookList />} />
+      <Route path="/product" element={<ProductList />} />
     </Routes>
   );
 }

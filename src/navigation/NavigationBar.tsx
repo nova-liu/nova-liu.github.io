@@ -107,6 +107,14 @@ export default function NavigationBar() {
             >
               Books
             </Link>
+            <Link
+              to="/product"
+              className={`navbar__link ${
+                isActive("/product") ? "navbar__link--active" : ""
+              }`}
+            >
+              Products
+            </Link>
           </nav>
 
           {/* Actions */}

@@ -1,0 +1,135 @@
+.product-list {
+  min-height: 100vh;
+  background: var(--default-bg-color);
+}
+
+.product-list__content {
+  padding-top: 5rem;
+}
+
+.product-list__container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.product-list__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.product-list__title {
+  margin: 0 0 0.75rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text-primary-color);
+}
+
+.product-list__description {
+  margin: 0 auto;
+  max-width: 620px;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-secondary-color);
+}
+
+.product-list__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.product-list__card {
+  display: grid;
+  grid-template-rows: minmax(180px, 1fr) 1fr;
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--default-border-color);
+  background: var(--island-bg-color);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  animation: productFadeIn 0.35s ease forwards;
+  opacity: 0;
+  overflow: hidden;
+}
+
+.product-list__card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-hover);
+}
+
+.product-list__logo-wrapper {
+  width: 100%;
+  height: 100%;
+  padding: 0.9rem;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  overflow: hidden;
+}
+
+.product-list__logo {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-list__logo-fallback {
+  display: none;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.product-list__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem 1.1rem 1.1rem;
+}
+
+.product-list__name {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-primary-color);
+}
+
+.product-list__intro {
+  margin: 0;
+  color: var(--text-secondary-color);
+  line-height: 1.6;
+  font-size: 0.95rem;
+}
+
+@keyframes productFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .product-list__title {
+    font-size: 1.8rem;
+  }
+
+  .product-list__grid {
+    grid-template-columns: 1fr;
+  }
+}
