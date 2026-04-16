@@ -13,7 +13,7 @@ export const products: Product[] = [
     name: "Nano Agent",
     logo: "/product/nanoAgent.svg",
     description:
-      "A multi-agent terminal collaboration experiment built on OpenAI-compatible Chat Completions.",
+      "The minimal agent framework for research and experimentation.",
     productUrl: "https://github.com/nova-liu/nanoAgent",
   },
 ];
