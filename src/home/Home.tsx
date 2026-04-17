@@ -57,11 +57,12 @@ export default function Home() {
         <section className="home__hero">
           <div className="home__hero-island">
             <div className="home__avatar">
-              <span className="home__avatar-emoji">👋</span>
+              <span className="home__avatar-emoji">🐶</span>
             </div>
             <h1 className="home__title">Hi, I'm Nova Liu</h1>
             <p className="home__subtitle">
-              Program Engineer · Badminton Lover
+              I'm working on backend development for many years, now I'm
+              interested in AI Agent.
             </p>
             <div className="home__social">
               {socialLinks.map((social) => (
