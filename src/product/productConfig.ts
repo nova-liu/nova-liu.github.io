@@ -16,4 +16,12 @@ export const products: Product[] = [
       "The minimal agent framework for research and experimentation.",
     productUrl: "https://github.com/nova-liu/nanoAgent",
   },
+  {
+    id: "claude-broswer-bridge",
+    name: "Claude Browser Bridge",
+    logo: "/product/claude-broswer-bridge.png",
+    description:
+      "Run Claude Code directly in the browser, with the ability to read and control the current page.",
+    productUrl: "https://github.com/nova-liu/claude-broswer-bridge",
+  },
 ];
