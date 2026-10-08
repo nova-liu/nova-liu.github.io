@@ -62,7 +62,7 @@ export default function Home() {
             <h1 className="home__title">Hi, I'm Nova Liu</h1>
             <p className="home__subtitle">
               I'm working on backend development for many years, now I'm
-              interested in AI Agent.
+              interested in AI.
             </p>
             <div className="home__social">
               {socialLinks.map((social) => (
